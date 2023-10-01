@@ -1,0 +1,89 @@
+// قاعدة البيانات
+let books = [];
+
+// دالة لإضافة كتاب جديد
+function addBook(title, author, year) {
+  let book = {
+    title: title,
+    author: author,
+    year: year
+  };
+  books.push(book);
+}
+
+// دالة لتعديل معلومات كتاب
+function editBook(index, title, author, year) {
+  if (index >= 0 && index < books.length) {
+    books[index].title = title;
+    books[index].author = author;
+    books[index].year = year;
+  }
+}
+
+// دالة لحذف كتاب
+function deleteBook(index) {
+  if (index >= 0 && index < books.length) {
+    books.splice(index, 1);
+}
+}
+
+// دالة لعرض معلومات الكتب
+function displayBooks() {
+  for (let i = 0; i < books.length; i++) {
+    console.log(Book ${i + 1}: ${books[i].title} by ${books[i].author}, ${books[i].year});
+  }
+}
+
+// تجربة البرنامج
+addBook("Start with why", "Simon Sinek", 2021);
+addBook("But how do it know", "J. Clark Scott", 2022);
+displayBooks();
+
+editBook(0, "Clean Code", "Robert Cecil Martin", 2023);
+displayBooks();
+
+deleteBook(1);
+displayBooks();
+
+class BookPurchaseInvoice {
+    constructor(customerName, bookTitle, price, quantity, purchaseDate) {
+      this.customerName = customerName;
+      this.bookTitle = bookTitle;
+      this.price = price;
+      this.quantity = quantity;
+      this.purchaseDate = purchaseDate;
+    }
+  
+    getTotalAmount() {
+      return this.price * this.quantity;
+    }
+  
+    printInvoice() {
+      console.log("********** Book Purchase Invoice **********");
+      console.log("Customer Name: " + this.customerName);
+      console.log("Book Title: " + this.bookTitle);
+      console.log("Price per Book: $" + this.price);
+      console.log("Quantity: " + this.quantity);
+      console.log("Total Amount: $" + this.getTotalAmount());
+      console.log("Purchase Date: " + this.purchaseDate);
+      console.log("******************************************");
+    }
+  }
+  
+  // Create a book purchase invoice
+  const customerName = "Ahmd";
+  const bookTitle = "But how do it know";
+const price = 59.9;
+const quantity = 2;
+const purchaseDate = new Date().toLocaleDateString();
+
+const invoice = new BookPurchaseInvoice(
+  customerName,
+  bookTitle,
+  price,
+  quantity,
+  purchaseDate
+);
+
+// Print the invoice
+invoice.printInvoice();
